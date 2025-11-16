@@ -17,13 +17,34 @@ Computer with MATLAB software
 	Also determine the stability.
 
 ## Program: 
+```
+num=[10]
+den=[0.1 0.7 1 0]
+sys=tf(num,den)
+[mag,phase,W]=bode(sys)
+mag=squeeze(mag)
+phase=squeeze(phase)
+phase1=deg2rad(phase)
+polarplot(phase1,mag,'linewidth',1.5)
+grid on
+[Gm Pm Wpc Wgc]=margin(sys)
+if(Wpc>Wgc)
+    disp('stable')
+elseif(Wpc == Wgc)
+    disp('marginally stable')
+else
+    disp('unstable')
+end
+```
 
 ## Output:
+<img width="702" height="629" alt="image" src="https://github.com/user-attachments/assets/cc1eba6e-26ad-4f25-8a84-e64df4ca3013" />
+
 
 ## Result:
 Thus the polar plot for the given transfer function was drawn and verified using MATLAB. <br>
-Gain margin = <br>
-Phase Margin = <br>
-Gain crossover frequency = <br>
-Phase crossover frequency = <br>
-The system is  ------------
+Gain margin = 0.7 <br>
+Phase Margin = -8.88 <br>
+Gain crossover frequency = 3.75 <br>
+Phase crossover frequency =  3.16 <br>
+The system is  unstable
